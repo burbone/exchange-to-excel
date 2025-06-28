@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "bybit.bybit_exel")
 public class BybitExelApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(BybitExelApplication.class, args);

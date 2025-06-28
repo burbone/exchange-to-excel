@@ -16,10 +16,10 @@
 	</parent>
 
 	<groupId>bybit</groupId>
-	<artifactId>bybit-exel</artifactId>
+	<artifactId>exchange-to-excel</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bybit-exel</name>
-	<description>Demo project for Spring Boot + Lombok</description>
+	<name>exchange-to-excel</name>
+	<description>Project for getting data from cryptocurrency exchanges and exporting to Excel</description>
 
 	<properties>
 		<!-- Ваша версия Java -->

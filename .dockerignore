@@ -1,0 +1,29 @@
+# Исходный код
+src/
+pom.xml
+mvnw
+mvnw.cmd
+
+# Логи и временные файлы
+*.log
+target/maven-status/
+target/generated-sources/
+target/generated-test-sources/
+target/test-classes/
+
+# IDE файлы
+.idea/
+.vscode/
+*.iml
+
+# Git
+.git/
+.gitignore
+
+# Документация
+README.md
+DEPLOYMENT.md
+
+# Скрипты запуска
+start.bat
+start.sh 

@@ -24,9 +24,9 @@
     </div>
     <div class="flex-row">
         <label for="startTime">Начало:</label>
-        <input type="datetime-local" id="startTime" name="startTime" required>
+        <input type="datetime-local" max="9999-12-12T00:00" id="startTime" name="startTime" required>
         <label for="endTime">Конец:</label>
-        <input type="datetime-local" id="endTime" name="endTime" required>
+        <input type="datetime-local" max="9999-12-12T00:00" id="endTime" name="endTime" required>
     </div>
     <div class="flex-row">
       <label for="interval">Интервал:</label>
@@ -41,7 +41,6 @@
           <option value="4h">4 часа</option>
           <option value="6h">6 часа</option>
           <option value="12h">12 часов</option>
-          <option value="1d">1 день</option>
       </select>
   </div>
     <div style="overflow-x:auto;">

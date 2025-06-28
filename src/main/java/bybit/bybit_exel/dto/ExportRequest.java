@@ -8,6 +8,7 @@ import java.util.List;
 public class ExportRequest {
     private String startTime;
     private String endTime;
+    private String symbol;
     private String interval;
     private int columnsCount;
     private List<ColumnInfo> columns;
