@@ -1,26 +1,50 @@
 package bybit.bybit_exel.api.BybitApi;
 
+import bybit.bybit_exel.api.SymbolApi;
+import bybit.bybit_exel.Data.BybitDataPrepare;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.stereotype.Component;
 
-public class BybitSymbolApi {
+import java.io.IOException;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 
-    public boolean checkSymbol(String symbol) {
+@Component
+public class BybitSymbolApi implements SymbolApi {
+    private final HttpClient httpClient = HttpClient.newHttpClient();
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final BybitDataPrepare dataPrepare = new BybitDataPrepare();
+
+    @Override
+    public boolean isSymbolValid(String symbol) {
         try {
-            String formattedSymbol = symbol.replace(" ", "");
-            String url = "https://api.bybit.com/v5/market/instruments-info?category=spot&symbol=" + formattedSymbol;
-            RestTemplate restTemplate = new RestTemplate();
-            String response = restTemplate.getForObject(url, String.class);
+            // Используем централизованную обработку символа
+            String formattedSymbol = dataPrepare.prepareSymbol(symbol);
+            // Кодируем символ для безопасного использования в URL
+            String encodedSymbol = URLEncoder.encode(formattedSymbol, StandardCharsets.UTF_8);
+            String url = "https://api.bybit.com/v5/market/instruments-info?category=spot&symbol=" + encodedSymbol;
 
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(response);
-            JsonNode result = root.path("result");
-            JsonNode list = result.path("list");
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .GET()
+                    .build();
 
-            return list.size() > 0;
-        } catch (Exception e) {
-            return false;
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() == 200) {
+                JsonNode rootNode = objectMapper.readTree(response.body());
+                JsonNode resultNode = rootNode.get("result");
+                JsonNode listNode = resultNode.get("list");
+                return listNode != null && listNode.isArray() && listNode.size() > 0;
+            }
+        } catch (IOException | InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
+        return false;
     }
 }

@@ -1,6 +1,7 @@
 package bybit.bybit_exel.Data;
 
 import bybit.bybit_exel.api.ExchangeDataPrepare;
+import bybit.bybit_exel.util.IntervalUtils;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -21,31 +22,19 @@ public class KucoinDataPrepare implements ExchangeDataPrepare {
 
     @Override
     public String prepareInterval(String interval) {
-        return switch (interval) {
-            case "1m" -> "1min";
-            case "3m" -> "3min";
-            case "5m" -> "5min";
-            case "15m" -> "15min";
-            case "30m" -> "30min";
-            case "1h" -> "1hour";
-            case "2h" -> "2hour";
-            case "4h" -> "4hour";
-            case "6h" -> "6hour";
-            case "12h" -> "12hour";
-            default -> interval;
-        };
+        return IntervalUtils.toKucoinFormat(interval);
     }
 
     @Override
     public long prepareStartTime(String startTime) {
         LocalDateTime start = LocalDateTime.parse(startTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        return start.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() / 1000;
+        return start.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 
     @Override
     public long prepareEndTime(String endTime) {
         LocalDateTime end = LocalDateTime.parse(endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        return end.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() / 1000;
+        return end.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 
     @Override

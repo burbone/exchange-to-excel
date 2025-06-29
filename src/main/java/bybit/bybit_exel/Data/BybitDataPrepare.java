@@ -1,6 +1,7 @@
 package bybit.bybit_exel.Data;
 
 import bybit.bybit_exel.api.ExchangeDataPrepare;
+import bybit.bybit_exel.util.IntervalUtils;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -21,19 +22,7 @@ public class BybitDataPrepare implements ExchangeDataPrepare {
 
     @Override
     public String prepareInterval(String interval) {
-        return switch (interval) {
-            case "1m" -> "1";
-            case "3m" -> "3";
-            case "5m" -> "5";
-            case "15m" -> "15";
-            case "30m" -> "30";
-            case "1h" -> "60";
-            case "2h" -> "120";
-            case "4h" -> "240";
-            case "6h" -> "360";
-            case "12h" -> "720";
-            default -> interval;
-        };
+        return IntervalUtils.toBybitFormat(interval);
     }
 
     @Override

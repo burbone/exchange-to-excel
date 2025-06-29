@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/exchange-to-excel-0.0.1-SNAPSHOT.jar app.jar
 
 # Открываем порт
-EXPOSE 8080
+EXPOSE 8081
 
 # Запускаем приложение
 ENTRYPOINT ["java", "-jar", "app.jar"] 

@@ -59,7 +59,7 @@ public class ExportController {
             columnsInfoService.columsSetter(request.getColumns());
             List<bybit.bybit_exel.model.ColumnsInfo> columnsInfo = columnsInfoService.getColumns();
 
-            List<bybit.bybit_exel.model.Candle> candles = dataCollectorService.collectData(preparedData, columnsInfo);
+            List<bybit.bybit_exel.model.Candle> candles = dataCollectorService.collectData(preparedData, columnsInfo, request.getInterval());
 
             List<Long> times = dataProcessingService.extractTimestamps(candles, columnsInfo);
             Map<Long, Map<String, Double>> dataMap = dataProcessingService.createDataMap(candles, columnsInfo);

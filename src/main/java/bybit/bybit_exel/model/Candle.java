@@ -9,6 +9,7 @@ public class Candle {
     private double high;
     private double low;
     private double close;
+    private double volume;
     private String exchange;
 
     public Candle () {
