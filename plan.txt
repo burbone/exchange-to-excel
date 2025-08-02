@@ -1,0 +1,63 @@
+bybit-exel/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── bybit/
+│   │   │       └── bybit_exel/
+│   │   │           ├── controller/
+│   │   │           │   ├── SymbolController.java         // Проверка символа             +
+│   │   │           │   └── ExportController.java         // Экспорт Excel
+│   │   │           │
+│   │   │           ├── service/
+│   │   │           │   ├── SymbolService.java            // Проверка символа на бирже    +
+│   │   │           │   ├── DataCollectorService.java     // Многопоточный сбор данных        Хранилище
+│   │   │           │   ├── ExcelService.java             // Генерация Excel-файла            чисто файл
+│   │   │           │   └── StreamService.java            // Потоковая обработка данных       обработка входных, использует апи и Хранилище
+│   │   │           │
+│   │   │           ├── api/
+│   │   │           │   ├── BybitApi/
+│   │   │           │   │   ├── BybitKlineApi             // Получение kline bybit        -
+│   │   │           │   │   ├── BybitSymbolApi            // Проверка символа bybit       +
+│   │   │           │   └── KucoinApi/
+│   │   │           │       ├── KucoinKlineApi            // Получение kline kucoin       -
+│   │   │           │       └── KucoinSymbolApi           // Проверка символа bybit       +
+│   │   │           │
+│   │   │           ├── dto/
+│   │   │           │   ├── SymbolCheckRequest.java       // DTO для проверки символа     -+
+│   │   │           │   ├── SymbolCheckResponse.java      // DTO для ответа проверки      -+
+│   │   │           │   └── ExportRequest.java            // DTO для экспорта             -+
+│   │   │           │
+│   │   │           ├── model/
+│   │   │           │   ├── Kline.java                    // Модель свечи (Kline)
+│   │   │           │   └── MarketData.java               // Модель рыночных данных
+│   │   │           │
+│   │   │           ├── util/
+│   │   │           │   └── ExcelUtils.java               // Вспомогательные методы для Excel
+│   │   │           │
+│   │   │           └── BybitExelApplication.java         // Главный класс Spring Boot
+│   │   │
+│   │   ├── resources/
+│   │   │   ├── static/
+│   │   │   │   ├── index.html
+│   │   │   │   ├── css/
+│   │   │   │   │   └── styles.css
+│   │   │   │   └── js/
+│   │   │   │       └── app.js
+│   │   │   ├── templates/
+│   │   │   ├── application.properties
+│   │   │   └── logback-spring.xml
+│   │   │
+│   │   └── test/
+│   │       └── java/
+│   │           └── bybit/
+│   │               └── bybit_exel/
+│   │                   ├── controller/
+│   │                   ├── service/
+│   │                   └── api/
+│   │
+├── .gitignore
+├── pom.xml
+└── README.md
+
+получение данных String timeStart, String timeEnd, String interval,

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Экспорт данных криптопар</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .flex-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .excel-table { border-collapse: collapse; margin-top: 20px; }
+        .excel-table td, .excel-table th { border: 1px solid #ccc; padding: 8px; min-width: 120px; text-align: center; }
+        .add-col-btn { font-size: 22px; padding: 0 12px; height: 38px; cursor: pointer; background: #e0e0e0; border: none; border-radius: 4px; margin-left: 10px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Экспорт исторических данных</h1>
+    <div class="flex-row">
+        <select id="main-exchange">
+            <option value="Bybit">Bybit</option>
+            <option value="Kucoin">Kucoin</option>
+        </select>
+        <input type="text" id="main-symbol" placeholder="Пример: BTC USDT, BTC ETH)" required>
+        <button id="check-symbol-btn" type="button">Проверить</button>
+    </div>
+    <div class="flex-row">
+        <label for="startTime">Начало:</label>
+        <input type="datetime-local" max="9999-12-12T00:00" id="startTime" name="startTime" required>
+        <label for="endTime">Конец:</label>
+        <input type="datetime-local" max="9999-12-12T00:00" id="endTime" name="endTime" required>
+    </div>
+    <div class="flex-row">
+      <label for="interval">Интервал:</label>
+      <select id="interval" name="interval" required>
+          <option value="1m">1 минута</option>
+          <option value="3m">3 минуты</option>
+          <option value="5m">5 минут</option>
+          <option value="15m">15 минут</option>
+          <option value="30m">30 минут</option>
+          <option value="1h">1 час</option>
+          <option value="2h">2 часа</option>
+          <option value="4h">4 часа</option>
+          <option value="6h">6 часа</option>
+          <option value="12h">12 часов</option>
+      </select>
+  </div>
+    <div style="overflow-x:auto;">
+        <table class="excel-table" id="excel-table">
+            <tr id="params-row">
+                <td>
+                    <select class="param-select">
+                        <option value="open">Цена открытия</option>
+                        <option value="close">Цена закрытия</option>
+                        <option value="high">Максимум</option>
+                        <option value="low">Минимум</option>
+                    </select>
+                </td>
+                <td><button class="add-col-btn" id="add-col-btn">+</button></td>
+            </tr>
+            <tr id="exchanges-row">
+                <td><select class="exchange-select"><option value="bybit">Bybit</option><option value="kucoin">Kucoin</option></select></td>
+            </tr>
+        </table>
+    </div>
+    <div style="text-align:center; margin: 25px 0;">
+      <button id="download-btn" type="button" class="download-btn">Скачать файл</button>
+  </div>
+    <div id="status" class="status-message"></div>
+</div>
+
+<div class="container">
+    <h1>Получить цены с бирж</h1>
+    <div class="flex-row">
+        <select id="exchange-one">
+            <option value="Bybit">Bybit</option>
+            <option value="Kucoin">Kucoin</option>
+        </select>
+        <select id="exchange-second">
+            <option value="Bybit">Bybit</option>
+            <option value="Kucoin">Kucoin</option>
+        </select>
+    </div>
+    <div style="text-align:center; margin: 25px 0;">
+        <button type="button" class="download-btn" id="download-prices-btn">Скачать</button>
+    </div>
+    <div id="prices-status" class="status-message"></div>
+</div>
+
+<script src="/js/app.js"></script>
+<script>
+    document.getElementById('add-col-btn').onclick = function() {
+        const paramsRow = document.getElementById('params-row');
+        const exchangesRow = document.getElementById('exchanges-row');
+        const tdParam = document.createElement('td');
+        tdParam.innerHTML = `<select class="param-select">
+            <option value="open">Цена открытия</option>
+            <option value="close">Цена закрытия</option>
+            <option value="high">Максимум</option>
+            <option value="low">Минимум</option>
+        </select>`;
+        paramsRow.insertBefore(tdParam, paramsRow.lastElementChild);
+        const tdExch = document.createElement('td');
+        tdExch.innerHTML = `<select class="exchange-select">
+            <option value="bybit">Bybit</option>
+            <option value="kucoin">Kucoin</option>
+        </select>`;
+        exchangesRow.appendChild(tdExch);
+    };
+</script>
+</body>
+</html>
