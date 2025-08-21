@@ -61,3 +61,10 @@ bybit-exel/
 └── README.md
 
 получение данных String timeStart, String timeEnd, String interval,
+
+1. Bitget ✅
+2. OKX ✅
+3. MEXC ✅
+4. BingX ✅
+5. Gate.io ✅
+6. Bitfinex ✅

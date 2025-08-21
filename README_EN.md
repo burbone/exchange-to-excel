@@ -16,11 +16,11 @@ Get data from cryptocurrency exchanges (Bybit, Kucoin) and export to Excel with 
 git clone https://github.com/burbone/exchange-to-excel.git
 cd exchange-to-excel
 ./mvnw.cmd clean package -DskipTests  # Windows
-java -jar target/exchange-to-excel-0.0.1-SNAPSHOT.jar
+java -jar target/exchange-to-excel-0.0.1-SNASPHOT.jar
 ```
 
 ## 📋 Requirements
-- Java 17+
+- Java 21+
 - Browser with JavaScript
 
 ## 🎯 Features
@@ -29,6 +29,7 @@ java -jar target/exchange-to-excel-0.0.1-SNAPSHOT.jar
 - ✅ Time-synchronized data
 - ✅ Excel export with customizable columns
 - ✅ Web interface
+- ✅ Download online prices of identical pairs from exchanges
 
 ## 📊 How to use
 1. Open `http://localhost:8081`
@@ -41,15 +42,15 @@ java -jar target/exchange-to-excel-0.0.1-SNAPSHOT.jar
 ## 🔧 API
 - `POST /api/check-symbol` - symbol validation
 - `POST /api/export-table` - Excel export
+- `POST /api/download-prices` - export online prices to Excel
 
 ## 🚀 Future plans
 - [ ] Adding new exchanges
-- [ ] Export to other formats (CSV, JSON)
 
 ## 🐛 Troubleshooting
 - **Port in use**: `java -jar app.jar --server.port=8082`
 - **No data**: check symbol and time range
-- **Java not found**: install Java 17+
+- **Java not found**: install Java 21+
 
 ## 📞 Contacts
 - **Email:** m.d.burobin@gmail.com
