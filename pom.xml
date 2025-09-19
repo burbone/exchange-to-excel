@@ -13,6 +13,7 @@
 		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	<!-- no -->
 
 	<groupId>bybit</groupId>
 	<artifactId>exchange-to-excel</artifactId>
@@ -110,7 +111,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
-					<mainClass>bybit.bybit_exel.BybitExelApplication</mainClass>
+					<mainClass>Exchange.BybitExelApplication</mainClass>
 				</configuration>
 				<executions>
 					<execution>
