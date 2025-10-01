@@ -77,11 +77,11 @@ Web application for analyzing arbitrage opportunities on cryptocurrency exchange
 #### Option 2: Run via JAR File
 
 1. Download the latest release:
-    - Go to Releases section
-    - Download Exchange-0.0.1-SNAPSHOT.jar file
+    - Go to [Releases](https://github.com/burbone/exchange-to-excel/releases/tag/v2.0.0)
+    - Download Exchange-2.0.0-SNAPSHOT.jar file
 2. Run the application:
 ```bash
-  java -jar Exchange-0.0.1-SNAPSHOT.jar
+  java -jar Exchange-2.0.0-SNAPSHOT.jar
 ```
 #### After Launch:
  - The application will automatically open browser at http://localhost:8081
@@ -89,7 +89,7 @@ Web application for analyzing arbitrage opportunities on cryptocurrency exchange
    #### Building JAR file manually:
 ```bash
     mvn clean package
-    # JAR file will be in target/Exchange-0.0.1-SNAPSHOT.jar
+    # JAR file will be in target/Exchange-2.0.0-SNAPSHOT.jar
 ```
 
 ---

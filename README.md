@@ -78,12 +78,12 @@
 #### Вариант 2: Запуск через JAR файл
 
 1. Скачайте последний релиз:
-    - Перейдите в раздел Releases
-    - Скачайте файл Exchange-0.0.1-SNAPSHOT.jar
+    - Перейдите в раздел [Releases](https://github.com/burbone/exchange-to-excel/releases/tag/v2.0.0)
+    - Скачайте файл Exchange-2.0.0-SNAPSHOT.jar
 2. Запустите приложение:
 
 ```bash
-  java -jar Exchange-0.0.1-SNAPSHOT.jar
+  java -jar Exchange-2.0.0-SNAPSHOT.jar
 ```
 #### После запуска:
 - Приложение автоматически откроет браузер по адресу http://localhost:8081
@@ -91,7 +91,7 @@
   #### Сборка JAR файла вручную:
 ```bash
     mvn clean package
-    # JAR файл будет в target/Exchange-0.0.1-SNAPSHOT.jar
+    # JAR файл будет в target/Exchange-2.0.0-SNAPSHOT.jar
 ```
 ---
 
